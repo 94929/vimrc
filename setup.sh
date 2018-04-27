@@ -1,1 +1,1 @@
-cp -bs $(pwd)/.vimrc ~
+cp -bs $(pwd)/config.vim ~/.vimrc
