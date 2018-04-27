@@ -1,10 +1,11 @@
-"INDENT
+" INDENT
 set autoindent
 set smartindent
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 
-"VIEW
+" VIEW
 set number
 set ruler
 set title
@@ -12,15 +13,19 @@ set wrap
 set linebreak
 set showmatch
 
-"COLOR
+" SEARCH
+set incsearch
+set hlsearch
+
+" BACKUP
+set backupdir=./.backup,.,/tmp
+set directory=.,./.backup,/tmp
+
+" COLOR
+set colorcolumn=80
+
 syntax on
 syntax enable
 
 colorscheme desert
-
-if exists('+colorcolumn')
-	set colorcolumn=80
-else
-	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
 
