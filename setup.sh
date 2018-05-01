@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function install_plugin_manager {
+install_plugin_manager() {
 	# install vim-plug if not installed
 	if [ ! -f ~/.vim/autoload/plug.vim ]; then
 		uri=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -9,7 +9,7 @@ function install_plugin_manager {
 	fi
 }
 
-function copy_vimrc {
+copy_vimrc() {
 	# set config.vim path
 	if [ ! $1 ]; then cpath=$PWD; else cpath=$1; fi
 
@@ -26,7 +26,7 @@ function copy_vimrc {
 	echo "the vim configuration file is now set!"
 }
 
-function main {
+main() {
 	install_plugin_manager
 	copy_vimrc
 	exit 0
