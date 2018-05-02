@@ -3,14 +3,14 @@
 declare -r CONFIG=$PWD/config.vim	# absolute path to source config file
 declare -r VIMRC=$HOME/.vimrc	    # absolute path to destination vimrc file
 
-readonly E_XCURL=66				# cannot download from the url
+readonly E_XCURL=66			# cannot download from the url
 readonly E_XOS=67				# cannot detect ostype
 readonly E_XCP=68				# cannot perform cp
 
 platform='unknown'	
 
 install_plugin_manager() {
-	# install vim-plug, if not installed
+  # install vim-plug, if not installed
 	if [[ ! -f ~/.vim/autoload/plug.vim ]]; then
 		url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 		curl -fLo ~/.vim/autoload/plug.vim --create-dirs $url || {
