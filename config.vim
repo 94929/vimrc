@@ -9,13 +9,20 @@ Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call plug#end()
 
 " PLUGIN
-autocmd VimEnter * NERDTree
-autocmd bufenter * 
-    \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) 
-    \ | q | endif
+"" NERDTree
+let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
+let NERDTreeAutoDeleteBuffer=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+
+"" Powerline
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set laststatus=2
+set t_Co=256
 
 " KEY MAPPING
-nmap <silent> <C-N> :NERDTree<CR>
+nmap <silent> <C-N> :NERDTreeToggle<CR>
 
 " INDENT
 set autoindent
@@ -41,6 +48,8 @@ set incsearch
 set hlsearch
 
 " BACKUP
+set noswapfile
+
 set backupdir=./.backup,.,/tmp
 set directory=.,./.backup,/tmp
 
