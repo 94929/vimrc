@@ -11,14 +11,21 @@ readonly E_XINS=69      # cannot install plugins
 PLATFORM=''
 
 detect_ostype() {
+  echo 'Detecting your ostype..'
+
   case $OSTYPE in
     darwin*	) PLATFORM='MAC';;
     linux*	) PLATFORM='LNX';;
     *	      ) echo "unknown: $OSTYPE"; exit $E_XOS;;
   esac
+
+  echo "Your OS: ${PLATFORM}!!"
+  sleep 2s
 }
 
 install_plugin_manager() {
+  echo 'Attempting to install vim-plug on your machine..'
+
   # install vim-plug, if not installed
   if [[ ! -f ~/.vim/autoload/plug.vim ]]; then
     url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -27,10 +34,16 @@ install_plugin_manager() {
       exit $E_XCURL
     }
     echo 'The vim plugin manager is installed!'
+  else
+    echo 'The vim plugin manager is already installed in your machine.'
   fi
+
+  sleep 2s
 }
 
 link_vimrc() {
+  echo 'Attempting to install new .vimrc on your machine..'
+
   # if no pre-installed .vimrc, then
   if [[ ! -f $VIMRC ]]; then
     # simply copy config.vim as .vimrc for current system
@@ -44,6 +57,8 @@ link_vimrc() {
       copy_vimrc
     fi
   fi
+
+  sleep 2s
 }
 
 copy_vimrc() {
@@ -58,17 +73,24 @@ copy_vimrc() {
     echo "Cannot create symbolic link to $CONFIG" >&2
     exit $E_XCP;
   }
-  echo 'The .vimrc is now installed in your machine!'
+
+  echo 'The vimrc is now installed in your machine!!'
 }
 
 install_plugins() {
+  echo 'Attempting to install plugins specified in the vimrc..'
   vim +PlugInstall +qall || {
     echo 'Cannot install plugins' >&2
     exit $E_XINS
   }
+
+  echo 'Succesfully installed the plugins!!'
+  sleep 2s
 }
 
 install_plugin_dependencies() {
+  echo 'Attempting to install plugin dependencies..'
+
   # install powerline fonts for 'powerline'
   sudo apt-get install fonts-powerline || {
     git clone https://github.com/powerline/fonts.git --depth=1
@@ -77,13 +99,16 @@ install_plugin_dependencies() {
     cd ..
     rm -rf fonts
   }
+
+  echo 'Succesfully installed the plugin dependencies!!'
+  sleep 2s
 }
 
 main() {
-  detect_ostype
-  install_plugin_manager
-  link_vimrc
-  install_plugins
+  #detect_ostype
+  #install_plugin_manager
+  #link_vimrc
+  #install_plugins
   install_plugin_dependencies
 }
 
