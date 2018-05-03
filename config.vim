@@ -2,27 +2,32 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'scrooloose/syntastic'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 " PLUGIN
 "" NERDTree
+let NERDTreeAutoDeleteBuffer=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 
-"" Powerline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set laststatus=2
-set t_Co=256
+""" Open a NERDTree automatically when vim starts up if no files were specified.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+""" Close vim if the only window left open is a NERDTree.
+autocmd bufenter * 
+    \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) 
+    \ | q | endif
 
 " KEY MAPPING
-nmap <silent> <C-N> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 " INDENT
 set autoindent
