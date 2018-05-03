@@ -59,10 +59,22 @@ install_plugins() {
   }
 }
 
+install_plugin_dependencies() {
+  # install powerline fonts for 'powerline'
+  sudo apt-get install fonts-powerline || {
+    git clone https://github.com/powerline/fonts.git --depth=1
+    cd fonts
+    ./install.sh
+    cd ..
+    rm -rf fonts
+  }
+}
+
 main() {
 	install_plugin_manager
 	link_vimrc
 	install_plugins
+  install_plugin_dependencies
 }
 
 main
