@@ -8,6 +8,16 @@ readonly E_XOS=67       # cannot detect ostype
 readonly E_XCP=68       # cannot perform cp
 readonly E_XINS=69      # cannot install plugins
 
+PLATFORM=''
+
+detect_ostype() {
+  case $OSTYPE in
+    darwin*	) PLATFORM='MAC';;
+    linux*	) PLATFORM='LNX';;
+    *	      ) echo "unknown: $OSTYPE"; exit $E_XOS;;
+  esac
+}
+
 install_plugin_manager() {
   # install vim-plug, if not installed
   if [[ ! -f ~/.vim/autoload/plug.vim ]]; then
@@ -38,10 +48,9 @@ link_vimrc() {
 
 copy_vimrc() {
   # set appropriate cp command depending on the ostype
-  case $OSTYPE in
-    darwin*	) cp="ln -fs";;
-    linux*	) cp="cp -bs";;
-    *	      ) echo "unknown: $OSTYPE"; exit $E_XOS;;
+  case $PLATFORM in
+    'MAC'	  ) cp="ln -fs";;
+    'LNX'	  ) cp="cp -bs";;
   esac
 
   # copy the vim file
@@ -71,6 +80,7 @@ install_plugin_dependencies() {
 }
 
 main() {
+  detect_ostype
   install_plugin_manager
   link_vimrc
   install_plugins
