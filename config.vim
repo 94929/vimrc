@@ -11,8 +11,8 @@ call plug#end()
 " PLUGIN
 autocmd VimEnter * NERDTree
 autocmd bufenter * 
-    \ if (winnr("$") == 1 && exists("b:NERDTree") && 
-    \ b:NERDTree.isTabTree()) | q | endif
+    \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) 
+    \ | q | endif
 
 " KEY MAPPING
 nmap <silent> <C-N> :NERDTree<CR>
@@ -25,7 +25,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-autocmd FileType sh setlocal shiftwidth=2 tabstop=2
+autocmd FileType sh setlocal shiftwidth=2 tabstop=2 softtabstop=4
 
 " VIEW
 set number
