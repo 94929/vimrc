@@ -8,7 +8,6 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
-"Plug 'valloric/youcompleteme'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -52,7 +51,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-autocmd FileType sh setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileTYpe make setlocal noexpandtab
 
 " VIEW
