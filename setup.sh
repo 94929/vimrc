@@ -3,6 +3,8 @@
 declare -r CONFIG=$PWD/config.vim   # absolute path to source config file
 declare -r VIMRC=$HOME/.vimrc       # absolute path to destination vimrc file
 
+readonly E_SUCC=0       # exit with success
+
 readonly E_XCURL=66     # cannot download from the url
 readonly E_XOS=67       # cannot detect ostype
 readonly E_XCP=68       # cannot perform cp
@@ -21,6 +23,7 @@ detect_ostype() {
 
   echo "Your OS: ${PLATFORM}!!"
   sleep 2s
+  exit $E_SUCC
 }
 
 install_plugin_manager() {
@@ -39,6 +42,7 @@ install_plugin_manager() {
   fi
 
   sleep 2s
+  exit $E_SUCC
 }
 
 link_vimrc() {
@@ -59,6 +63,7 @@ link_vimrc() {
   fi
 
   sleep 2s
+  exit $E_SUCC
 }
 
 copy_vimrc() {
@@ -86,6 +91,7 @@ install_plugins() {
 
   echo 'Succesfully installed the plugins!!'
   sleep 2s
+  exit $E_SUCC
 }
 
 install_plugin_dependencies() {
@@ -102,14 +108,16 @@ install_plugin_dependencies() {
 
   echo 'Succesfully installed the plugin dependencies!!'
   sleep 2s
+  exit $E_SUCC
 }
 
 main() {
-  #detect_ostype
-  #install_plugin_manager
-  #link_vimrc
-  #install_plugins
+  detect_ostype
+  install_plugin_manager
+  link_vimrc
+  install_plugins
   install_plugin_dependencies
+  exit $E_SUCC
 }
 
 main
