@@ -8,10 +8,17 @@ test_equality() {
 
 test_detect_ostype() {
   detect_ostype
-  ret_val=$?
-  echo $ret_val
-  assertEquals 0 $ret_val
+  assertEquals $E_SUCC $?
 }
 
-#. shunit2-2.1.6/src/shunit2
-. /Users/jsha/Projects/shunit2/shunit2
+test_install_plugin_manager() {
+  install_plugin_manager
+  assertEquals $E_SUCC $?
+}
+
+test_link_vimrc() {
+  link_vimrc
+  assertEquals $E_SUCC $?
+}
+
+. shunit2-2.1.6/src/shunit2
