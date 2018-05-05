@@ -19,7 +19,6 @@ main() {
     install_plugin_manager
     link_vimrc
     install_plugins
-    #install_plugin_dependencies
   fi;
 }
 
@@ -101,23 +100,6 @@ install_plugins() {
   }
 
   echo 'Succesfully installed the plugins!!'
-  sleep 2s
-  return $E_SUCC
-}
-
-install_plugin_dependencies() {
-  echo 'Attempting to install plugin dependencies..'
-
-  # install powerline fonts for 'powerline'
-  sudo apt-get install fonts-powerline || {
-    git clone https://github.com/powerline/fonts.git --depth=1
-    cd fonts
-    ./install.sh
-    cd ..
-    rm -rf fonts
-  }
-
-  echo 'Succesfully installed the plugin dependencies!!'
   sleep 2s
   return $E_SUCC
 }
