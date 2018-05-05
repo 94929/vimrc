@@ -12,6 +12,17 @@ readonly E_XINS=69      # cannot install plugins
 
 PLATFORM=''
 
+main() {
+  # if no argument passed (i.e. install mode)
+  if [ -z ${1+x} ]; then
+    detect_ostype
+    install_plugin_manager
+    link_vimrc
+    install_plugins
+    #install_plugin_dependencies
+  fi;
+}
+
 detect_ostype() {
   echo 'Detecting your ostype..'
 
@@ -23,7 +34,7 @@ detect_ostype() {
 
   echo "Your OS: ${PLATFORM}!!"
   sleep 2s
-  exit $E_SUCC
+  return $E_SUCC
 }
 
 install_plugin_manager() {
@@ -42,7 +53,7 @@ install_plugin_manager() {
   fi
 
   sleep 2s
-  exit $E_SUCC
+  return $E_SUCC
 }
 
 link_vimrc() {
@@ -63,7 +74,7 @@ link_vimrc() {
   fi
 
   sleep 2s
-  exit $E_SUCC
+  return $E_SUCC
 }
 
 copy_vimrc() {
@@ -91,7 +102,7 @@ install_plugins() {
 
   echo 'Succesfully installed the plugins!!'
   sleep 2s
-  exit $E_SUCC
+  return $E_SUCC
 }
 
 install_plugin_dependencies() {
@@ -108,17 +119,8 @@ install_plugin_dependencies() {
 
   echo 'Succesfully installed the plugin dependencies!!'
   sleep 2s
-  exit $E_SUCC
+  return $E_SUCC
 }
 
-main() {
-  detect_ostype
-  install_plugin_manager
-  link_vimrc
-  install_plugins
-  install_plugin_dependencies
-  exit $E_SUCC
-}
-
-main
+main "$@"
 
