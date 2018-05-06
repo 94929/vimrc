@@ -11,6 +11,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'valloric/youcompleteme'
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -21,8 +22,6 @@ call plug#end()
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=1
 
 """ Open NERDTree automatically when vim starts up if no files were specified.
 autocmd StdinReadPre * let s:std_in=1
@@ -46,6 +45,9 @@ set laststatus=2
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
+"" 'seoul256'
+let g:seoul256_srgb = 1
+
 " KEY MAPPING
 let mapleader=','
 
@@ -58,17 +60,22 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set smarttab
 
 autocmd FileTYpe make setlocal noexpandtab
 
 " VIEW
-set number
+set relativenumber
 set ruler
 set title
 set wrap
 set linebreak
+set cursorline
 set showmatch
 set showcmd
+
+" PERFORMANCE
+set lazyredraw
 
 " SEARCH
 set hlsearch
@@ -76,8 +83,8 @@ set incsearch
 set ignorecase
 
 " BACKUP
-set backupdir=./.backup,.,/tmp
-set directory=.,./.backup,/tmp
+set directory=~/.vim/swap//
+set backupdir=~/.vim/backup//
 
 " COLOR
 set colorcolumn=80
@@ -85,5 +92,5 @@ set colorcolumn=80
 syntax on
 syntax enable
 
-colorscheme desert
+colorscheme seoul256
 
