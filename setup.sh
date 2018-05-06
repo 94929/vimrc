@@ -28,7 +28,7 @@ detect_ostype() {
   case $OSTYPE in
     darwin*	) PLATFORM='MAC';;
     linux*	) PLATFORM='LNX';;
-    *	      ) echo "unknown: $OSTYPE"; exit $E_XOS;;
+    *       ) echo "unknown: $OSTYPE"; exit $E_XOS;;
   esac
 
   echo "Your OS: ${PLATFORM}!!"
@@ -94,6 +94,7 @@ copy_vimrc() {
 
 install_plugins() {
   echo 'Attempting to install plugins specified in the vimrc..'
+
   vim +PlugInstall +qall || {
     echo 'Cannot install plugins' >&2
     exit $E_XINS
@@ -102,6 +103,32 @@ install_plugins() {
   echo 'Succesfully installed the plugins!!'
   sleep 2s
   return $E_SUCC
+}
+
+install_plugin_dependencies() {
+  echo 'Attempting to install plugin dependencies..'
+
+  # set appropriate command depending on the ostype
+  case $PLATFORM in
+    'MAC'	  ) cmd="brew install cmake";;
+    'LNX'	  ) cmd="install_youcompleteme_linux";;
+  esac
+
+  # dependencies for 'youcompleteme'
+  $cmd || {
+    echo 'Cannot install plugin dependency'
+    exit $E_XINS
+  }
+
+  echo 'Succesfully installed the plugin dependencies!!'
+  sleep 2s
+  return $E_SUCC
+}
+
+install_youcompleteme_linux() {
+  sudo apt-get install build-essential cmake
+  cd ~/.vim/plugged/youcompleteme
+  ./install.py --all
 }
 
 main "$@"

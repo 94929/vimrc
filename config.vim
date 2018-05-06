@@ -2,12 +2,16 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'valloric/youcompleteme'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -17,8 +21,8 @@ call plug#end()
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+let NERDTreeMinimalUI=1
 
 """ Open NERDTree automatically when vim starts up if no files were specified.
 autocmd StdinReadPre * let s:std_in=1
@@ -37,6 +41,10 @@ set statusline+=%*
 "" 'airline'
 let g:airline_theme='hybrid'
 set laststatus=2
+
+"" 'youcompleteme'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 
 " KEY MAPPING
 let mapleader=','
@@ -68,8 +76,6 @@ set incsearch
 set ignorecase
 
 " BACKUP
-set noswapfile
-
 set backupdir=./.backup,.,/tmp
 set directory=.,./.backup,/tmp
 
