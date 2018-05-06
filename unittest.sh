@@ -22,5 +22,10 @@ test_install_plugins() {
   assertEquals $E_SUCC $?
 }
 
+test_install_plugin_dependencies() {
+  install_plugin_dependencies
+  assertEquals $E_SUCC $?
+}
+
 . shunit2-2.1.6/src/shunit2
 
