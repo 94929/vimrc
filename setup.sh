@@ -108,10 +108,10 @@ install_plugins() {
 install_plugin_dependencies() {
   echo 'Attempting to install plugin dependencies..'
 
-  # set appropriate command depending on the ostype
+  # if current machine uses macOS, install cmake using homebrew
   case $PLATFORM in
     'MAC'	  ) cmd="brew install cmake";;
-    'LNX'	  ) cmd="install_youcompleteme_linux";;
+    'LNX'	  ) cmd="";;
   esac
 
   # dependencies for 'youcompleteme'
@@ -123,12 +123,6 @@ install_plugin_dependencies() {
   echo 'Succesfully installed the plugin dependencies!!'
   sleep 2s
   return $E_SUCC
-}
-
-install_youcompleteme_linux() {
-  sudo apt-get install build-essential cmake
-  cd ~/.vim/plugged/youcompleteme
-  ./install.py --all
 }
 
 main "$@"
