@@ -92,5 +92,5 @@ set colorcolumn=80
 syntax on
 syntax enable
 
-"colorscheme seoul256
+silent! colorscheme seoul256
 
