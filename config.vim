@@ -11,6 +11,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'valloric/youcompleteme'
 
