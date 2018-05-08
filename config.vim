@@ -53,6 +53,7 @@ let g:seoul256_srgb = 1
 let mapleader=','
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-g> :Goyo<CR>
 
 " INDENT
 filetype plugin indent on
