@@ -87,10 +87,10 @@ set directory=~/.vim/swap//
 set backupdir=~/.vim/backup//
 
 " COLOR
-set colorcolumn=80
-
 syntax on
 syntax enable
+
+set colorcolumn=80
 
 silent! colorscheme seoul256
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 declare -r CONFIG=$PWD/config.vim   # absolute path to source config file
-declare -r VIMRC=$HOME/.vimrc       # absolute path to destination vimrc file
+declare -r VIMRC=~/.vimrc           # absolute path to destination vimrc file
 
 readonly E_SUCC=0       # exit with success
 
@@ -16,9 +16,11 @@ main() {
   # if no argument passed (i.e. install mode)
   if [ -z ${1+x} ]; then
     detect_ostype
+    setup_vimrc_dependencies
     install_plugin_manager
     link_vimrc
     install_plugins
+    install_plugin_dependencies
   fi;
 }
 
@@ -34,6 +36,20 @@ detect_ostype() {
   echo "Your OS: ${PLATFORM}!!"
   sleep 2s
   return $E_SUCC
+}
+
+setup_vimrc_dependencies() {
+  echo 'Attempting to setup any prerequisites..'
+
+  # setup backup directories for file edit
+  mkdir -p ~/.vim/swap ~/.vim/backup || {
+    echo 'Cannot mkdir'
+    exit $E_XINS
+  }
+
+  echo 'Succesfully set up the pre-requisites'
+  sleep 2s
+  return $E_SUCC 
 }
 
 install_plugin_manager() {
