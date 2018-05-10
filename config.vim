@@ -23,6 +23,7 @@ call plug#end()
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
+let NERDTreeWinSize=16
 
 """ Open NERDTree automatically when vim starts up if no files were specified.
 autocmd StdinReadPre * let s:std_in=1
@@ -52,8 +53,8 @@ let g:seoul256_srgb = 1
 " KEY MAPPING
 let mapleader=','
 
-map <C-n> :NERDTreeToggle<CR>
-map <C-g> :Goyo<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>g :Goyo<CR>
 
 " INDENT
 filetype plugin indent on
