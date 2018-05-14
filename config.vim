@@ -46,9 +46,6 @@ set laststatus=2
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
-"" 'seoul256'
-let g:seoul256_srgb = 1
-
 " KEY MAPPING
 let mapleader=','
 
@@ -67,7 +64,7 @@ set smarttab
 autocmd FileTYpe make setlocal noexpandtab
 
 " VIEW
-set relativenumber
+set number
 set ruler
 set title
 set wrap
