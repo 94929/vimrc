@@ -12,7 +12,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'majutsushi/tagbar'
 Plug 'valloric/youcompleteme'
+
+Plug 'chrisbra/csv.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -51,6 +54,7 @@ let mapleader=','
 
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>g :Goyo<CR>
+nnoremap <Leader>t :CSVTabular<CR>
 
 " INDENT
 filetype plugin indent on
@@ -89,6 +93,7 @@ set backupdir=~/.vim/backup//
 syntax on
 syntax enable
 
+set t_Co=256
 set colorcolumn=80
 
 silent! colorscheme seoul256
