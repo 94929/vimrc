@@ -20,12 +20,12 @@ Plug 'chrisbra/csv.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" PLUGIN
+" PLUGINS
 "" 'nerdtree'
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-let NERDTreeWinSize=16
+let NERDTreeWinSize=32
 
 """ Open NERDTree automatically when vim starts up if no files were specified.
 autocmd StdinReadPre * let s:std_in=1
@@ -37,17 +37,13 @@ autocmd BufEnter *
     \ | q | endif
 
 "" 'syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 "" 'airline'
 let g:airline_theme='hybrid'
 set laststatus=2
-
-"" 'youcompleteme'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
 
 " KEY MAPPING
 let mapleader=','

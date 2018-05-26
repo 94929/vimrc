@@ -124,7 +124,7 @@ install_plugins() {
 install_plugin_dependencies() {
   echo 'Attempting to install plugin dependencies..'
 
-  # if current machine uses macOS, install cmake using homebrew
+  # if current machine uses macOS, install dependencies with homebrew
   case $PLATFORM in
     'MAC'	  ) cmd="brew install cmake; brew install ctags";;
     'LNX'	  ) cmd="";;

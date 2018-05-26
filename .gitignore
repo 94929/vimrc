@@ -36,3 +36,7 @@
 ehthumbs.db
 Thumbs.db
 
+# Custom files #
+################
+.coveralls.yml
+
