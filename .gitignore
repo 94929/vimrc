@@ -39,4 +39,4 @@ Thumbs.db
 # Custom files #
 ################
 .coveralls.yml
-
+coverage/
