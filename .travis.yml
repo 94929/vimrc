@@ -6,3 +6,7 @@ before_script:
 script:
     - bash unittest.sh
 
+after_success:
+    - gen install bashcov
+    - bashcov unittest.sh
+
