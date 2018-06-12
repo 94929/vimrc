@@ -61,6 +61,8 @@ set softtabstop=4
 set expandtab
 set smarttab
 
+set pastetoggle=<leader>p
+
 autocmd FileTYpe make setlocal noexpandtab
 
 " VIEW
