@@ -48,6 +48,7 @@ set laststatus=2
 " KEY MAPPING
 let mapleader=','
 
+nnoremap <Leader>l :noh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>g :Goyo<CR>
 nnoremap <Leader>t :CSVTabular<CR>
