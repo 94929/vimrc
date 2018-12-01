@@ -8,20 +8,14 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'majutsushi/tagbar'
-Plug 'valloric/youcompleteme'
-
-Plug 'chrisbra/csv.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 " PLUGINS
-"" 'nerdtree'
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
@@ -35,12 +29,7 @@ autocmd VimEnter * if argc()==0 && !exists("s:std_in") | NERDTree | endif
 autocmd BufEnter * 
     \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) 
     \ | q | endif
-
-"" 'syntastic'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
+"
 "" 'airline'
 let g:airline_theme='hybrid'
 set laststatus=2
@@ -51,7 +40,7 @@ let mapleader=','
 nnoremap <Leader>l :noh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>g :Goyo<CR>
-nnoremap <Leader>t :CSVTabular<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
 
 " INDENT
 filetype plugin indent on
@@ -96,4 +85,18 @@ set t_Co=256
 set colorcolumn=80
 
 silent! colorscheme seoul256
+
+" AUTO-SET PASTE MODE
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+" fzf
+set rtp+=/usr/local/opt/fzf
 
