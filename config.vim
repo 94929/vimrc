@@ -9,7 +9,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'majutsushi/tagbar'
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -61,7 +60,6 @@ set ruler
 set title
 set wrap
 set linebreak
-set cursorline
 set showmatch
 set showcmd
 
@@ -84,12 +82,9 @@ syntax enable
 set t_Co=256
 set colorcolumn=80
 
-silent! colorscheme seoul256
-
 " AUTO-SET PASTE MODE
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
-
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
