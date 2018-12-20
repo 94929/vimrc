@@ -9,7 +9,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
-Plug 'majutsushi/tagbar'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -28,10 +27,13 @@ autocmd VimEnter * if argc()==0 && !exists("s:std_in") | NERDTree | endif
 autocmd BufEnter * 
     \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) 
     \ | q | endif
-"
+
 "" 'airline'
 let g:airline_theme='hybrid'
 set laststatus=2
+
+"" Syntastic - python3
+let g:syntastic_python_checkers = ['python3']
 
 " KEY MAPPING
 let mapleader=','
