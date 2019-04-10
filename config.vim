@@ -92,6 +92,3 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
-" fzf
-set rtp+=/usr/local/opt/fzf
-
