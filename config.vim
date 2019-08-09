@@ -4,14 +4,20 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
+Plug 'joshdick/onedark.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" THEME
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " PLUGINS
 let NERDTreeAutoDeleteBuffer=1
@@ -29,7 +35,7 @@ autocmd BufEnter *
     \ | q | endif
 
 "" 'airline'
-let g:airline_theme='hybrid'
+let g:airline_theme='onedark'
 set laststatus=2
 
 "" Syntastic - python3
@@ -41,7 +47,6 @@ let mapleader=','
 nnoremap <Leader>l :noh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>g :Goyo<CR>
-nnoremap <Leader>t :TagbarToggle<CR>
 
 " INDENT
 filetype plugin indent on
@@ -81,6 +86,8 @@ syntax enable
 
 set t_Co=256
 set colorcolumn=80
+
+colorscheme onedark
 
 " AUTO-SET PASTE MODE
 let &t_SI .= "\<Esc>[?2004h"
