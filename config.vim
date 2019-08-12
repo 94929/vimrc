@@ -48,6 +48,9 @@ nnoremap <Leader>l :noh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>g :Goyo<CR>
 
+nmap j gj
+nmap k gk
+
 " INDENT
 filetype plugin indent on
 
