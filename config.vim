@@ -78,6 +78,7 @@ set lazyredraw
 set hlsearch
 set incsearch
 set ignorecase
+set smartcase
 
 " BACKUP
 set directory=~/.vim/swap//
