@@ -89,7 +89,7 @@ syntax on
 syntax enable
 
 set t_Co=256
-set colorcolumn=80
+set colorcolumn=79
 
 colorscheme onedark
 
