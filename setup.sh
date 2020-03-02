@@ -111,7 +111,7 @@ copy_vimrc() {
 install_plugins() {
   echo 'Attempting to install plugins specified in the vimrc..'
 
-  vim +PlugInstall +qall || {
+  vi +PlugInstall +qall || {
     echo 'Cannot install plugins' >&2
     exit $E_XINS
   }
