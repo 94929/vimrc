@@ -11,6 +11,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
 Plug 'joshdick/onedark.vim'
 
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
