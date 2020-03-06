@@ -126,7 +126,7 @@ install_plugin_dependencies() {
 
   # if current machine uses macOS, install dependencies with homebrew
   case $PLATFORM in
-    'MAC'	  ) cmd="brew install cmake; brew install ctags";;
+    'MAC'	  ) cmd="brew update; brew install cmake; brew install ctags";;
     'LNX'	  ) cmd="";;
   esac
 
