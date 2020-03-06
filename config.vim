@@ -6,7 +6,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
@@ -47,9 +46,15 @@ let g:syntastic_python_checkers = ['python3']
 " KEY MAPPING
 let mapleader=','
 
+nnoremap <Leader>c :sp<CR>
+nnoremap <Leader>v :vsp<CR>
 nnoremap <Leader>l :noh<CR>
-nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>g :Goyo<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
+
+" SPLIT OPTIONS
+set splitbelow
+set splitright
 
 nmap j gj
 nmap k gk
