@@ -8,10 +8,9 @@ Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'joshdick/onedark.vim'
-
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
