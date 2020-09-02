@@ -30,10 +30,10 @@ detect_ostype() {
   case $OSTYPE in
     darwin*	) PLATFORM='MAC';;
     linux*	) PLATFORM='LNX';;
-    *       ) echo "unknown: $OSTYPE"; exit $E_XOS;;
+    *       ) echo "Un-Supported: $OSTYPE"; exit $E_XOS;;
   esac
 
-  echo "Your OS: ${PLATFORM}!!"
+  echo "Your OS Type: ${PLATFORM}!!"
   sleep 2s
   return $E_SUCC
 }
@@ -47,7 +47,7 @@ setup_vimrc_dependencies() {
     exit $E_XINS
   }
 
-  echo 'Succesfully set up the pre-requisites'
+  echo 'Succesfully set up the prerequisites!'
   sleep 2s
   return $E_SUCC 
 }
@@ -111,7 +111,7 @@ copy_vimrc() {
 install_plugins() {
   echo 'Attempting to install plugins specified in the vimrc..'
 
-  vi +PlugInstall +qall || {
+  vim +PlugInstall +qall || {
     echo 'Cannot install plugins' >&2
     exit $E_XINS
   }
