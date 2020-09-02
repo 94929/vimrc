@@ -12,7 +12,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch':'develop' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -117,16 +116,3 @@ function! XTermPasteBegin()
   set paste
   return ""
 endfunction
-
-" Python-mode
-" set completeopt=menuone, noinsert
-let g:pymode_rope = 1
-let g:pymode_rope_completion = 1
-let g:pymode_rope_complete_on_dot = 1
-let g:pymode_rope_completion_bind = '<C-space>'
-
-
-
-
-
-
