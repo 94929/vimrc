@@ -5,10 +5,10 @@ declare -r VIMRC=~/.vimrc           # absolute path to destination vimrc file
 
 readonly E_SUCC=0       # exit with success
 
-readonly E_XCURL=66     # cannot download from the url
+readonly E_XCURL=66     # cannot download contents from given url
 readonly E_XOS=67       # cannot detect ostype
-readonly E_XCP=68       # cannot perform cp
-readonly E_XINS=69      # cannot install plugins
+readonly E_XCP=68       # cannot perform cp command
+readonly E_XINS=69      # cannot install plugins or their dependencies
 
 PLATFORM=''
 
@@ -126,12 +126,11 @@ install_plugin_dependencies() {
 
   # if current machine uses macOS, install dependencies with homebrew
   case $PLATFORM in
-    'MAC'	  ) cmd="brew update; brew install cmake";;
+    'MAC'	  ) cmd="brew update ; brew install cmake";;
     'LNX'	  ) cmd="";;
   esac
 
-  # dependencies for 'youcompleteme'
-  $cmd || {
+  eval $cmd || {
     echo 'Cannot install plugin dependency'
     exit $E_XINS
   }
