@@ -26,33 +26,28 @@ main() {
 }
 
 detect_ostype() {
-  echo 'Detecting your ostype..'
-
   case $OSTYPE in
     darwin*	) PLATFORM='MAC';;
     linux*	) PLATFORM='LNX';;
     *       ) echo "Un-Supported: $OSTYPE"; exit $E_XOS;;
   esac
 
-  echo "Your OS Type: [${PLATFORM}]"
-  sleep 1s
+  echo "Your OS is [${PLATFORM}]"
   return $E_SUCC
 }
 
 check_vim_installation() {
-  echo 'Attempting to check if vim is installed on your machine..'
+  echo 'Checking if vim is installed on your machine...'
   if ! command -v vim &> /dev/null
   then
     echo 'vim is not installed on your machine'
     exit
   fi
-  sleep 1s
-  echo 'VIM is already installed on your machine'
   return $E_SUCC
 }
 
 setup_vimrc_dependencies() {
-  echo 'Attempting to setup any prerequisites..'
+  echo 'Setting-up any prerequisites...'
 
   # setup backup directories for file edit
   mkdir -p ~/.vim/swap ~/.vim/backup || {
@@ -60,13 +55,11 @@ setup_vimrc_dependencies() {
     exit $E_XINS
   }
 
-  echo 'Succesfully set up the prerequisites!'
-  sleep 1s
   return $E_SUCC 
 }
 
 install_plugin_manager() {
-  echo 'Attempting to install vim-plug on your machine..'
+  echo 'Installing vim-plug on your machine...'
 
   # install vim-plug, if not installed
   if [[ ! -f ~/.vim/autoload/plug.vim ]]; then
@@ -75,17 +68,13 @@ install_plugin_manager() {
       echo 'Installing the vim plugin manager is failed.' >&2
       exit $E_XCURL
     }
-    echo 'The vim plugin manager is installed!'
-  else
-    echo 'The vim plugin manager is already installed in your machine.'
   fi
 
-  sleep 1s
   return $E_SUCC
 }
 
 link_vimrc() {
-  echo 'Attempting to install new .vimrc on your machine..'
+  echo 'Installing the new .vimrc on your machine...'
 
   # if no pre-installed .vimrc, then
   if [[ ! -f $VIMRC ]]; then
@@ -101,7 +90,6 @@ link_vimrc() {
     fi
   fi
 
-  sleep 1s
   return $E_SUCC
 }
 
@@ -117,25 +105,21 @@ copy_vimrc() {
     echo "Cannot create symbolic link to $CONFIG" >&2
     exit $E_XCP;
   }
-
-  echo 'The vimrc is now installed in your machine!!'
 }
 
 install_plugins() {
-  echo 'Attempting to install plugins specified in the vimrc..'
+  echo 'Installing plugins specified in the vimrc...'
 
   vim +PlugInstall +qall || {
     echo 'Cannot install plugins' >&2
     exit $E_XINS
   }
 
-  echo 'Succesfully installed the plugins!!'
-  sleep 1s
   return $E_SUCC
 }
 
 install_plugin_dependencies() {
-  echo 'Attempting to install plugin dependencies..'
+  echo 'Installing plugin dependencies...'
 
   # if current machine uses macOS, install dependencies with homebrew
   case $PLATFORM in
@@ -148,8 +132,6 @@ install_plugin_dependencies() {
     exit $E_XINS
   }
 
-  echo 'Succesfully installed the plugin dependencies!!'
-  sleep 1s
   return $E_SUCC
 }
 
