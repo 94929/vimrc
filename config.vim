@@ -11,7 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'junegunn/seoul256.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -99,7 +99,7 @@ syntax enable
 set t_Co=256
 set colorcolumn=79
 
-colorscheme onedark
+colorscheme seoul256
 
 " AUTO-SET PASTE MODE
 let &t_SI .= "\<Esc>[?2004h"
