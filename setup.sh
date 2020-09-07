@@ -35,7 +35,7 @@ detect_ostype() {
   esac
 
   echo "Your OS Type: [${PLATFORM}]"
-  sleep 2s
+  sleep 1s
   return $E_SUCC
 }
 
@@ -46,7 +46,7 @@ check_vim_installation() {
     echo 'vim is not installed on your machine'
     exit
   fi
-  sleep 2s
+  sleep 1s
   echo 'VIM is already installed on your machine'
   return $E_SUCC
 }
@@ -61,7 +61,7 @@ setup_vimrc_dependencies() {
   }
 
   echo 'Succesfully set up the prerequisites!'
-  sleep 2s
+  sleep 1s
   return $E_SUCC 
 }
 
@@ -80,7 +80,7 @@ install_plugin_manager() {
     echo 'The vim plugin manager is already installed in your machine.'
   fi
 
-  sleep 2s
+  sleep 1s
   return $E_SUCC
 }
 
@@ -101,7 +101,7 @@ link_vimrc() {
     fi
   fi
 
-  sleep 2s
+  sleep 1s
   return $E_SUCC
 }
 
@@ -130,7 +130,7 @@ install_plugins() {
   }
 
   echo 'Succesfully installed the plugins!!'
-  sleep 2s
+  sleep 1s
   return $E_SUCC
 }
 
@@ -149,7 +149,7 @@ install_plugin_dependencies() {
   }
 
   echo 'Succesfully installed the plugin dependencies!!'
-  sleep 2s
+  sleep 1s
   return $E_SUCC
 }
 
