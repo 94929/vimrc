@@ -16,6 +16,7 @@ main() {
   # if no argument passed (i.e. install mode)
   if [ -z ${1+x} ]; then
     detect_ostype
+    check_vim_installation
     setup_vimrc_dependencies
     install_plugin_manager
     link_vimrc
@@ -33,8 +34,20 @@ detect_ostype() {
     *       ) echo "Un-Supported: $OSTYPE"; exit $E_XOS;;
   esac
 
-  echo "Your OS Type: ${PLATFORM}!!"
+  echo "Your OS Type: [${PLATFORM}]"
   sleep 2s
+  return $E_SUCC
+}
+
+check_vim_installation() {
+  echo 'Attempting to check if vim is installed on your machine..'
+  if ! command -v vim &> /dev/null
+  then
+    echo 'vim is not installed on your machine'
+    exit
+  fi
+  sleep 2s
+  echo 'VIM is already installed on your machine'
   return $E_SUCC
 }
 
@@ -95,12 +108,12 @@ link_vimrc() {
 copy_vimrc() {
   # set appropriate cp command depending on the ostype
   case $PLATFORM in
-    'MAC'	  ) cp="ln -fs";;
-    'LNX'	  ) cp="cp -bs";;
+    'MAC'	  ) CP="ln -fs";;
+    'LNX'	  ) CP="cp -bs";;
   esac
 
   # copy the vim file
-  $cp $CONFIG $VIMRC || {
+  $CP $CONFIG $VIMRC || {
     echo "Cannot create symbolic link to $CONFIG" >&2
     exit $E_XCP;
   }
@@ -126,11 +139,11 @@ install_plugin_dependencies() {
 
   # if current machine uses macOS, install dependencies with homebrew
   case $PLATFORM in
-    'MAC'	  ) cmd="brew update ; brew install cmake";;
-    'LNX'	  ) cmd="";;
+    'MAC'	  ) CMD="brew update ; brew install cmake";;
+    'LNX'	  ) CMD="";;
   esac
 
-  eval $cmd || {
+  eval $CMD || {
     echo 'Cannot install plugin dependency'
     exit $E_XINS
   }
