@@ -27,22 +27,17 @@ main() {
 
 detect_ostype() {
   case $OSTYPE in
-    darwin*	) PLATFORM='MAC';;
-    linux*	) PLATFORM='LNX';;
+    darwin*	) 
+      PLATFORM='MAC';;
+    linux*	) 
+      PLATFORM='LNX'
+      sudo apt install vim
+      sudo apt install curl
+      ;;
     *       ) echo "Un-Supported: $OSTYPE"; exit $E_XOS;;
   esac
 
   echo "Your OS is [${PLATFORM}]"
-  return $E_SUCC
-}
-
-check_vim_installation() {
-  echo 'Checking if vim is installed on your machine...'
-  if ! command -v vim &> /dev/null
-  then
-    echo 'vim is not installed on your machine'
-    exit
-  fi
   return $E_SUCC
 }
 
