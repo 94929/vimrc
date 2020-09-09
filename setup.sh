@@ -16,7 +16,6 @@ main() {
   # if no argument passed (i.e. install mode)
   if [ -z ${1+x} ]; then
     detect_ostype
-    check_vim_installation
     setup_vimrc_dependencies
     install_plugin_manager
     link_vimrc
