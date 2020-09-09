@@ -8,7 +8,6 @@ Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 
@@ -110,3 +109,5 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
+" Enable backspace as a delete key
+set backspace=indent,eol,start
