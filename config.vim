@@ -35,7 +35,6 @@ autocmd BufEnter *
     \ | q | endif
 
 "" 'airline'
-let g:airline_theme='onedark'
 set laststatus=2
 
 "" Syntastic - python3
