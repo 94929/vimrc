@@ -69,6 +69,7 @@ autocmd FileTYpe make setlocal noexpandtab
 
 " VIEW
 set number
+set relativenumber
 set ruler
 set title
 set wrap
