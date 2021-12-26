@@ -12,6 +12,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -39,8 +40,11 @@ autocmd BufEnter *
 "" 'airline'
 set laststatus=2
 
-"" Syntastic - python3
+"" syntastic - python3
 let g:syntastic_python_checkers = ['python3']
+
+"" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
 
 " KEY MAPPING
 let mapleader=','
